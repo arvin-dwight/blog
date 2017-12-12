@@ -1,1 +1,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-size:14px;
+    font-family: "Lato", "RobotoDraft", "Roboto", "Helvetica Neue", "sans-serif";
+}

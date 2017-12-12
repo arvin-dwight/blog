@@ -5,14 +5,37 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 
+import { routing, appRoutingProviders } from './app.routing';
+
+import { 
+	RouteGuardProvider,
+	CanAccessLoginProvider 
+} from './providers/index';
+
+import {
+	LoginComponent,
+	DashboardComponent,
+	HomeComponent,
+} from './pages/index';
+
 @NgModule({
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        routing
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+
+        LoginComponent,
+		DashboardComponent,
+		HomeComponent,
+    ],
+    providers: [
+    	appRoutingProviders,
+    	RouteGuardProvider,
+		CanAccessLoginProvider 
     ],
     bootstrap: [ AppComponent ]
 })
