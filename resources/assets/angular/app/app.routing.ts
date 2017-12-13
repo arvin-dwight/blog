@@ -13,6 +13,7 @@ import {
 
 const appRoutes: Routes = [
 	{ path: 'login', component: LoginComponent, canActivate: [CanAccessLoginProvider] },
+	{ path: 'google-login', component: LoginComponent },
 	{ path: 'dashboard', component: DashboardComponent, canActivate: [RouteGuardProvider] },
 	{ path: '**', component: HomeComponent }
 ];

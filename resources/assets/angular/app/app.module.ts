@@ -7,6 +7,12 @@ import { MaterialModule } from './modules/material.module';
 
 import { routing, appRoutingProviders } from './app.routing';
 
+import { Ng2UiAuthModule } from 'ng2-ui-auth';
+
+import { 
+  AUTH_CONFIG,
+} from './config/index';
+
 import { 
 	RouteGuardProvider,
 	CanAccessLoginProvider 
@@ -23,7 +29,8 @@ import {
         BrowserModule,
         BrowserAnimationsModule,
         MaterialModule,
-        routing
+        routing,
+        Ng2UiAuthModule.forRoot(AUTH_CONFIG),
     ],
     declarations: [
         AppComponent,
