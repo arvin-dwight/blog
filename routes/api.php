@@ -13,8 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('auth/google', 'LoginController@google');
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+	$api->post('auth/google', 'App\Http\Controllers\LoginController@google');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	$api->group(['middleware' => 'api.auth'], function ($api) {
+        $api->post('my-posts', 'App\Http\Controllers\PostController@myPost');
+    });
 });

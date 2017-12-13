@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,7 +16,8 @@ import {
 
 import { 
 	RouteGuardProvider,
-	CanAccessLoginProvider 
+	CanAccessLoginProvider,
+	ApiProvider
 } from './providers/index';
 
 import {
@@ -27,6 +29,7 @@ import {
 @NgModule({
     imports: [
         BrowserModule,
+        HttpModule,
         BrowserAnimationsModule,
         MaterialModule,
         routing,
@@ -42,7 +45,8 @@ import {
     providers: [
     	appRoutingProviders,
     	RouteGuardProvider,
-		CanAccessLoginProvider 
+		CanAccessLoginProvider,
+		ApiProvider
     ],
     bootstrap: [ AppComponent ]
 })

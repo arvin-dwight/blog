@@ -16,15 +16,21 @@ export class LoginComponent {
 
 	loginWithGoogle(): void {
         this.auth.authenticate('google')
-			.map(
-				(response) => response.json()
-			)
 			.finally(
-				() => console.log('success')
+				() => {
+					setTimeout( () => {
+						if(this.auth.isAuthenticated()) {
+							this.router.navigateByUrl('dashboard');
+						}
+					});
+				}
 			)
             .subscribe(
             	(response) => {
-            		console.log(response);
+            		if(response.message == "token_generated"){
+            			let date = new Date();
+            			this.storage.set('name',response.data.name, date.toString());
+            		}
 		    	}, 
 		    	(err: any) => console.log(err)
 		    );

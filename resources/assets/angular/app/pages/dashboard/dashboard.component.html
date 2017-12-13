@@ -1,1 +1,31 @@
-dashboard
+<div class="example-container mat-elevation-z8">
+	<mat-table #table [dataSource]="dataSource">
+
+		<ng-container matColumnDef="title">
+			<mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+			<mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+		</ng-container>
+
+		<!-- Name Column -->
+		<ng-container matColumnDef="created_at">
+			<mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
+			<mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+		</ng-container>
+
+		<!-- Weight Column -->
+		<ng-container matColumnDef="updated_at">
+			<mat-header-cell *matHeaderCellDef> Updated </mat-header-cell>
+			<mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
+		</ng-container>
+
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+	</mat-table>
+
+  	<mat-paginator 
+  		#paginator
+  		[length]="length"
+        [pageSize]="20"
+        (page)="onChange($event)">
+  	</mat-paginator>
+</div>
