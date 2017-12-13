@@ -30,7 +30,7 @@ class PostController extends Controller {
 		});
 		return new JsonResponse([
             'message' => 'my_posts',
-            'data' => Post::where('is_published',1)->orderBy('updated_at', 'desc')->paginate(5)
+            'data' => Post::where('is_published',1)->orderBy('updated_at', 'desc')->paginate(6)
         ]);
 	}
 }

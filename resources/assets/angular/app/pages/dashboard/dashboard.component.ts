@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 	length:number = 0;
 
 	displayedColumns = ['title', 'created_at', 'updated_at'];
-  	// dataSource = new MatTableDataSource(ELEMENT_DATA);
   	dataSource = new MatTableDataSource();
 
   	@ViewChild(MatPaginator) paginator: MatPaginator;

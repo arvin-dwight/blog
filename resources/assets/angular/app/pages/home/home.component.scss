@@ -1,0 +1,60 @@
+.home-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.contentHeight{
+	height: 80px!important;
+	overflow:hidden;
+	position:relative;
+}
+
+.align-left{
+	text-align: left;
+}
+
+.example-card {
+  	width: 300px;
+    margin: 10px;
+    display: inline-block!important;
+}
+
+.example-header-image {
+  	background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  	background-size: cover;
+}
+
+.fadeout {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    background: -webkit-linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    ); 
+    background-image: -moz-linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    background-image: -o-linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    background-image: -ms-linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    width:100%;
+} 
+
+.word-ellipsis {
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    width: 300px;
+}
