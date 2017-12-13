@@ -25,6 +25,7 @@ import {
 	DashboardComponent,
 	HomeComponent,
 	PostComponent,
+	AddComponent
 } from './pages/index';
 
 @NgModule({
@@ -42,7 +43,8 @@ import {
         LoginComponent,
 		DashboardComponent,
 		HomeComponent,
-		PostComponent
+		PostComponent,
+		AddComponent
     ],
     entryComponents: [
     	PostComponent

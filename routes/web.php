@@ -15,3 +15,7 @@ Route::get('/{any?}', function () {
     return view('index');
 });
 
+Route::get('/post/{any?}', function () {
+    return view('index');
+});
+
