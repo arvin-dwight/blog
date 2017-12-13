@@ -1,0 +1,11 @@
+.login-container {
+	
+	margin-top: 250px;
+	text-align: center;
+	
+	& > button {
+		background: #DF4A32;
+		color: #fff;
+    	width: 220px;
+	}
+}
