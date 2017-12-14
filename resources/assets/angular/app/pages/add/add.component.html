@@ -1,0 +1,27 @@
+<div class="add-container">
+	<form class="example-container" (submit)="submit()" #postForm="ngForm">
+		<mat-form-field>
+			<input matInput name="title" placeholder="Title" [(ngModel)]="title" required="">
+		</mat-form-field>
+
+		<mat-form-field>
+			<textarea matInput name="content" placeholder="Content" [(ngModel)]="content" style="height: 230px;" required=""></textarea>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-select name="status" placeholder="Status" [(value)]="status" required>
+				<mat-option value="0">Draft</mat-option>
+				<mat-option value="1">Publish</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<button 
+			mat-raised-button color="primary"
+			[disabled]="postForm.form.invalid">
+			Submit
+		</button>
+	</form>
+</div>
+<div class="add-container">
+	<markdown [data]="content"></markdown>
+</div>

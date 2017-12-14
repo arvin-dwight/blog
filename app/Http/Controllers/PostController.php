@@ -29,8 +29,55 @@ class PostController extends Controller {
 			return $currentPage;
 		});
 		return new JsonResponse([
-            'message' => 'my_posts',
+            'message' => 'all_posts',
             'data' => Post::where('is_published',1)->orderBy('updated_at', 'desc')->paginate(6)
         ]);
+	}
+
+	public function post(Request $request) {
+
+		if($request->has('id')){
+			$id = $request->input('id');
+			return new JsonResponse([
+	            'message' => 'posts',
+	            'data' => JWTAuth::parseToken()->authenticate()->posts()->where('id', $id)->first()
+	        ]);
+		}
+
+		return new JsonResponse([
+            'message' => 'error'
+        ]);
+	}
+
+	public function addPost(Request $request) {
+
+		if($request->has('id')){
+			$id = $request->input('id');
+			if( !$post = JWTAuth::parseToken()->authenticate()->posts()->where('id', $id)->first() ){
+				$user = JWTAuth::parseToken()->authenticate();
+				$post = new Post;
+				$post->user_id = $user->id;
+			}
+
+			$post->title = $request->input('title');
+			$post->content = $request->input('content');
+			$post->is_published = $request->input('status');
+
+			if($post->save()){
+				return new JsonResponse(['message' => 'success']);
+			}
+		}
+
+		return new JsonResponse(['message' => 'error']);
+	}
+
+	public function deletePost(Request $request) {
+
+		$id = $request->input('id');
+
+		if($request->has('id')){
+			$id = $request->input('id');
+			JWTAuth::parseToken()->authenticate()->posts()->where('id', $id)->delete();
+		}
 	}
 }

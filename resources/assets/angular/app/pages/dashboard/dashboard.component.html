@@ -3,19 +3,30 @@
 
 		<ng-container matColumnDef="title">
 			<mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-			<mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+			<mat-cell *matCellDef="let element"> 
+				<a mat-button routerLink="/post/{{element.id}}">
+					{{element.title}} 
+				</a>
+			</mat-cell>
 		</ng-container>
 
-		<!-- Name Column -->
 		<ng-container matColumnDef="created_at">
 			<mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
 			<mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
 		</ng-container>
 
-		<!-- Weight Column -->
 		<ng-container matColumnDef="updated_at">
 			<mat-header-cell *matHeaderCellDef> Updated </mat-header-cell>
 			<mat-cell *matCellDef="let element"> {{element.updated_at}} </mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="id">
+			<mat-header-cell *matHeaderCellDef></mat-header-cell>
+			<mat-cell *matCellDef="let element"> 
+				<a mat-button (click)="delete(element.id)">
+					Delete
+				</a> 
+			</mat-cell>
 		</ng-container>
 
 		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

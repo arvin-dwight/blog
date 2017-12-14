@@ -7,7 +7,7 @@
 			<!-- <mat-card-subtitle class="align-left word-ellipsis">{{ post.user_id }}</mat-card-subtitle> -->
 		</mat-card-header>
 		<mat-card-content class="contentHeight">
-			<p class="align-left">{{ post.content }}</p>
+			<p class="align-left"><markdown [data]="post.content"></markdown></p>
 			<div class="fadeout"></div>
 		</mat-card-content>
 		<mat-card-actions>

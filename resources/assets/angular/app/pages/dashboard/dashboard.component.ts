@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 	page:number = 1;
 	length:number = 0;
 
-	displayedColumns = ['title', 'created_at', 'updated_at'];
+	displayedColumns = ['title', 'created_at', 'updated_at', 'id'];
   	dataSource = new MatTableDataSource();
 
   	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -45,6 +45,14 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.page = parseInt(event.pageIndex) + 1;
 		this.getData();
 	}
+
+	delete( id ) {
+		this.api.post('/api/delete-posts', {
+			id: id
+		}).subscribe((response) => {
+			this.getData();
+		});
+	} 
 
 	ngAfterViewInit() {
 		this.getData();

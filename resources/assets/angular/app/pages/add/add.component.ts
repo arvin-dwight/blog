@@ -16,6 +16,11 @@ export class AddComponent implements OnInit, OnDestroy {
 	private ngUnsubscribe: Subject<void> = new Subject<void>();
 	isEdit: boolean = false;
 
+	public id: number = 0;
+	public title = '';
+	public content = '';
+	public status = '';
+
 	constructor( 
 		private router: Router,
 		private route: ActivatedRoute,
@@ -25,14 +30,36 @@ export class AddComponent implements OnInit, OnDestroy {
 	        let id = params['id'];
 	        if(typeof id !== 'undefined'){
 	        	this.isEdit = true;
+	        	this.id = id;
 	        }
 	    });
 	}
 
 	ngOnInit(): void {
 		if(this.isEdit){
-			console.log('edit');
+			this.api.post('/api/post',{
+				id: this.id
+			}).subscribe((response) => {
+				let res = response.json();
+				this.title = res.data.title;
+				this.content = res.data.content;
+				this.status = res.data.is_published;
+			});
 		}
+	}
+
+	submit(): void {
+		this.api.post('/api/add-post',{
+			id: this.id,
+			title: this.title,
+			content: this.content,
+			status: this.status
+		}).subscribe((response) => {
+			let res = response.json();
+			if(res.message == "success") {
+				this.router.navigateByUrl('dashboard')
+			}
+		});
 	}
 
 	ngOnDestroy(): void {

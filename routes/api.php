@@ -20,5 +20,8 @@ $api->version('v1', function ($api) {
 
 	$api->group(['middleware' => 'api.auth'], function ($api) {
         $api->post('my-posts', 'App\Http\Controllers\PostController@myPost');
+        $api->post('post', 'App\Http\Controllers\PostController@post');
+        $api->post('add-post', 'App\Http\Controllers\PostController@addPost');
+        $api->post('delete-posts', 'App\Http\Controllers\PostController@deletePost');
     });
 });
